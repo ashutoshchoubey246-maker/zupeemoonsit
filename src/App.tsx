@@ -130,37 +130,37 @@ function LogoMark({ className = '' }: { className?: string }) {
     >
       <defs>
         <radialGradient id={disc} cx="34%" cy="28%" r="72%">
-          <stop offset="0%" stopColor="#FFF8F0" />
-          <stop offset="45%" stopColor="#FFE2C4" />
-          <stop offset="100%" stopColor="#F5B87A" />
+          <stop offset="0%" stopColor="#F7FBFF" />
+          <stop offset="45%" stopColor="#D6E8F7" />
+          <stop offset="100%" stopColor="#9BC4F0" />
         </radialGradient>
         <linearGradient id={textGrad} x1="14" y1="12" x2="52" y2="52" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#7A2E0A" />
-          <stop offset="0.35" stopColor="#C45A12" />
-          <stop offset="0.7" stopColor="#E07020" />
-          <stop offset="1" stopColor="#F0A04A" />
+          <stop stopColor="#0F2A5C" />
+          <stop offset="0.35" stopColor="#1E4A8C" />
+          <stop offset="0.7" stopColor="#2F6FED" />
+          <stop offset="1" stopColor="#7EB6E8" />
         </linearGradient>
         <linearGradient id={rayGrad} x1="32" y1="0" x2="32" y2="64" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#FFB347" />
-          <stop offset="0.45" stopColor="#E07020" />
-          <stop offset="1" stopColor="#C45A12" />
+          <stop stopColor="#7EB6E8" />
+          <stop offset="0.45" stopColor="#2F6FED" />
+          <stop offset="1" stopColor="#1E4A8C" />
         </linearGradient>
         <linearGradient id={ring} x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
-          <stop stopColor="#FFCC80" stopOpacity="0.2" />
-          <stop offset="0.5" stopColor="#E07020" stopOpacity="0.7" />
-          <stop offset="1" stopColor="#FFB347" stopOpacity="0.25" />
+          <stop stopColor="#9BC4F0" stopOpacity="0.2" />
+          <stop offset="0.5" stopColor="#2F6FED" stopOpacity="0.7" />
+          <stop offset="1" stopColor="#7EB6E8" stopOpacity="0.25" />
         </linearGradient>
         <radialGradient id={glow} cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#E07020" stopOpacity="0.32" />
-          <stop offset="70%" stopColor="#FFB347" stopOpacity="0.1" />
-          <stop offset="100%" stopColor="#E07020" stopOpacity="0" />
+          <stop offset="0%" stopColor="#2F6FED" stopOpacity="0.32" />
+          <stop offset="70%" stopColor="#7EB6E8" stopOpacity="0.1" />
+          <stop offset="100%" stopColor="#2F6FED" stopOpacity="0" />
         </radialGradient>
       </defs>
 
       <circle cx="32" cy="32" r="31.5" fill={`url(#${glow})`} />
       <circle cx="32" cy="32" r="18.8" fill={`url(#${disc})`} />
-      <circle cx="32" cy="32" r="18.8" stroke="#E07020" strokeOpacity="0.22" strokeWidth="1.1" />
-      <circle cx="32" cy="32" r="16.2" stroke="#C45A12" strokeOpacity="0.1" strokeWidth="0.7" />
+      <circle cx="32" cy="32" r="18.8" stroke="#2F6FED" strokeOpacity="0.22" strokeWidth="1.1" />
+      <circle cx="32" cy="32" r="16.2" stroke="#1E4A8C" strokeOpacity="0.1" strokeWidth="0.7" />
 
       <g className="logo-rays">
         <circle
@@ -198,8 +198,8 @@ function LogoMark({ className = '' }: { className?: string }) {
           .filter((r) => r.major)
           .map((ray, i) => (
             <g key={`tip-${i}`}>
-              <circle cx={ray.x2} cy={ray.y2} r="1.7" fill="#FFB347" opacity="0.45" />
-              <circle cx={ray.x2} cy={ray.y2} r="1.05" fill="#E07020" />
+              <circle cx={ray.x2} cy={ray.y2} r="1.7" fill="#7EB6E8" opacity="0.45" />
+              <circle cx={ray.x2} cy={ray.y2} r="1.05" fill="#2F6FED" />
             </g>
           ))}
       </g>
