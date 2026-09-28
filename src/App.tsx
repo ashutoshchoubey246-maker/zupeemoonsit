@@ -1,80 +1,77 @@
 import { useEffect, useId, useState } from 'react'
 import './App.css'
 
-const navItems = [
-  { href: '#services', id: 'services', label: 'Services' },
-  { href: '#products', id: 'products', label: 'Products' },
-  { href: '#process', id: 'process', label: 'Process' },
-  { href: '#about', id: 'about', label: 'About' },
-  { href: '#contact', id: 'contact', label: 'Contact' },
+const productItems = [
+  {
+    id: 'kids',
+    title: 'Kids learning apps',
+    copy: 'Age-aware lessons and playful progress parents can trust.',
+    href: '#products',
+    badge: 'EdTech',
+  },
+  {
+    id: 'games',
+    title: 'Mobile games',
+    copy: 'Casual and mid-core titles tuned for retention and joy.',
+    href: '#products',
+    badge: 'Play',
+  },
+  {
+    id: 'home',
+    title: 'Home services platforms',
+    copy: 'UrbanClap-style booking, payments, and pro marketplaces.',
+    href: '#products',
+    badge: 'Platform',
+  },
+  {
+    id: 'marketing',
+    title: 'Marketing systems',
+    copy: 'Campaign sites, dashboards, and growth automation.',
+    href: '#products',
+    badge: 'Growth',
+  },
 ]
 
-const services = [
+const serviceItems = [
   {
     tag: '01',
-    label: 'Mobile',
     title: 'Mobile app design & development',
-    copy: 'End-to-end iOS and Android apps — UX/UI design, native or cross-platform build, APIs, testing, and App Store / Play Store launch.',
+    copy: 'iOS and Android — UX/UI, native or cross-platform, store-ready launches.',
   },
   {
     tag: '02',
-    label: 'Web',
     title: 'Web app design & development',
-    copy: 'Custom web applications and SaaS — product design, dashboards, portals, admin panels, and secure APIs built for performance and scale.',
+    copy: 'SaaS, dashboards, portals, and APIs built for speed and scale.',
   },
   {
     tag: '03',
-    label: 'AI',
     title: 'Artificial intelligence',
-    copy: 'AI-powered features for your products — chat assistants, recommendations, automation, content tools, and smart workflows tailored to your users.',
+    copy: 'Assistants, recommendations, automation, and smart product features.',
   },
   {
     tag: '04',
-    label: 'Games',
     title: 'Games',
-    copy: 'Casual and mid-core mobile games — art direction, gameplay loops, live ops readiness, and smooth performance on real devices.',
+    copy: 'Gameplay loops, art direction, and live-ops ready mobile games.',
   },
   {
     tag: '05',
-    label: 'Brand',
     title: 'Branding',
-    copy: 'Brand identity for digital products — naming support, visual systems, logo direction, tone of voice, and consistent UI brand language.',
+    copy: 'Visual systems, logo direction, and consistent product brand language.',
   },
   {
     tag: '06',
-    label: 'Prototype',
     title: 'Prototyping',
-    copy: 'Clickable prototypes and design proofs — flows, wireframes, and interactive demos so stakeholders can feel the product before build.',
+    copy: 'Wireframes and clickable demos before you invest in full build.',
   },
   {
     tag: '07',
-    label: 'MVP',
     title: 'MVP development',
-    copy: 'Ship the smallest lovable product fast — scoped features, clean architecture, and a launch path from idea to first paying users.',
+    copy: 'Ship the smallest lovable product from idea to first users.',
   },
   {
     tag: '08',
-    label: 'Consolidate',
     title: 'Consolidation of existing systems',
-    copy: 'Unify legacy apps, scattered tools, and outdated platforms — migrate, refactor, and modernize without losing what already works.',
-  },
-  {
-    tag: '09',
-    label: 'Platforms',
-    title: 'Home services marketplace',
-    copy: 'UrbanClap-style booking platforms for cleaning, repairs, beauty, and on-demand pros — discovery, scheduling, payments, and ratings.',
-  },
-  {
-    tag: '10',
-    label: 'Growth',
-    title: 'Digital marketing systems',
-    copy: 'Campaign sites, analytics dashboards, automation, and content tooling that help brands reach the right people without guessing.',
-  },
-  {
-    tag: '11',
-    label: 'Learning',
-    title: 'Kids learning apps',
-    copy: 'Playful, age-aware learning experiences — reading, math, and curiosity products designed for small hands and trusted by parents.',
+    copy: 'Migrate, refactor, and modernize without losing what works.',
   },
 ]
 
@@ -163,14 +160,7 @@ function LogoMark({ className = '' }: { className?: string }) {
       <circle cx="32" cy="32" r="16.2" stroke="#1E4A8C" strokeOpacity="0.1" strokeWidth="0.7" />
 
       <g className="logo-rays">
-        <circle
-          cx="32"
-          cy="32"
-          r="22.8"
-          stroke={`url(#${ring})`}
-          strokeWidth="1.15"
-          fill="none"
-        />
+        <circle cx="32" cy="32" r="22.8" stroke={`url(#${ring})`} strokeWidth="1.15" fill="none" />
         <circle
           cx="32"
           cy="32"
@@ -224,6 +214,7 @@ function LogoMark({ className = '' }: { className?: string }) {
 function App() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [openMenu, setOpenMenu] = useState<'products' | 'services' | null>(null)
   const [active, setActive] = useState('')
 
   useEffect(() => {
@@ -241,7 +232,7 @@ function App() {
   }, [menuOpen])
 
   useEffect(() => {
-    const ids = navItems.map((item) => item.id)
+    const ids = ['products', 'services', 'process', 'about', 'contact']
     const observer = new IntersectionObserver(
       (entries) => {
         const visible = entries
@@ -275,7 +266,10 @@ function App() {
     return () => observer.disconnect()
   }, [])
 
-  const closeMenu = () => setMenuOpen(false)
+  const closeAll = () => {
+    setMenuOpen(false)
+    setOpenMenu(null)
+  }
 
   return (
     <div className="site">
@@ -283,7 +277,7 @@ function App() {
 
       <header className={`topnav ${scrolled ? 'topnav-scrolled' : ''}`}>
         <div className="topnav-inner">
-          <a className="brand" href="#top" aria-label="Jupeemoon home" onClick={closeMenu}>
+          <a className="brand" href="#top" aria-label="Jupeemoon home" onClick={closeAll}>
             <LogoMark className="brand-mark" />
             <span className="brand-text">
               Jupee<span>moon</span>
@@ -291,18 +285,89 @@ function App() {
           </a>
 
           <nav className="nav-links" aria-label="Primary">
-            {navItems.map((item) => (
-              <a
-                key={item.id}
-                href={item.href}
-                className={active === item.id ? 'is-active' : undefined}
+            <div
+              className={`nav-item ${openMenu === 'products' ? 'is-open' : ''} ${active === 'products' ? 'is-active' : ''}`}
+              onMouseEnter={() => setOpenMenu('products')}
+              onMouseLeave={() => setOpenMenu(null)}
+            >
+              <button
+                type="button"
+                className="nav-trigger"
+                aria-expanded={openMenu === 'products'}
+                onClick={() => setOpenMenu((v) => (v === 'products' ? null : 'products'))}
               >
-                {item.label}
-              </a>
-            ))}
+                Products
+                <span className="nav-caret" aria-hidden="true" />
+              </button>
+              <div className="mega-panel" role="menu">
+                <div className="mega-head">
+                  <strong>Products</strong>
+                  <span>Flagship builds we design and ship</span>
+                </div>
+                <div className="mega-grid">
+                  {productItems.map((item) => (
+                    <a key={item.id} href={item.href} className="mega-card" onClick={closeAll}>
+                      <span className="mega-badge">{item.badge}</span>
+                      <strong>{item.title}</strong>
+                      <p>{item.copy}</p>
+                    </a>
+                  ))}
+                </div>
+                <a className="mega-foot" href="#products" onClick={closeAll}>
+                  Explore all products →
+                </a>
+              </div>
+            </div>
+
+            <div
+              className={`nav-item ${openMenu === 'services' ? 'is-open' : ''} ${active === 'services' ? 'is-active' : ''}`}
+              onMouseEnter={() => setOpenMenu('services')}
+              onMouseLeave={() => setOpenMenu(null)}
+            >
+              <button
+                type="button"
+                className="nav-trigger"
+                aria-expanded={openMenu === 'services'}
+                onClick={() => setOpenMenu((v) => (v === 'services' ? null : 'services'))}
+              >
+                Services
+                <span className="nav-caret" aria-hidden="true" />
+              </button>
+              <div className="mega-panel mega-panel-wide" role="menu">
+                <div className="mega-head">
+                  <strong>Services</strong>
+                  <span>Design, build, and modernize under one roof</span>
+                </div>
+                <div className="mega-grid mega-grid-3">
+                  {serviceItems.slice(0, 6).map((item) => (
+                    <a key={item.tag} href="#services" className="mega-card" onClick={closeAll}>
+                      <span className="mega-badge">{item.tag}</span>
+                      <strong>{item.title}</strong>
+                      <p>{item.copy}</p>
+                    </a>
+                  ))}
+                </div>
+                <a className="mega-foot" href="#services" onClick={closeAll}>
+                  See all services →
+                </a>
+              </div>
+            </div>
+
+            <a href="#process" className={active === 'process' ? 'is-active' : undefined}>
+              Process
+            </a>
+            <a href="#about" className={active === 'about' ? 'is-active' : undefined}>
+              About
+            </a>
+            <a href="#contact" className={active === 'contact' ? 'is-active' : undefined}>
+              Contact
+            </a>
           </nav>
 
           <div className="nav-actions">
+            <a className="nav-link-quiet" href="mailto:contact@jupeemoon.com">
+              Contact sales
+            </a>
             <a className="nav-cta" href="#contact">
               Start a project
             </a>
@@ -322,13 +387,23 @@ function App() {
 
         <div className={`mobile-panel ${menuOpen ? 'is-open' : ''}`} hidden={!menuOpen}>
           <nav className="mobile-links" aria-label="Mobile">
-            {navItems.map((item) => (
-              <a key={item.id} href={item.href} onClick={closeMenu}>
-                {item.label}
-              </a>
-            ))}
+            <a href="#products" onClick={closeAll}>
+              Products
+            </a>
+            <a href="#services" onClick={closeAll}>
+              Services
+            </a>
+            <a href="#process" onClick={closeAll}>
+              Process
+            </a>
+            <a href="#about" onClick={closeAll}>
+              About
+            </a>
+            <a href="#contact" onClick={closeAll}>
+              Contact
+            </a>
           </nav>
-          <a className="btn btn-primary mobile-cta" href="#contact" onClick={closeMenu}>
+          <a className="btn btn-primary mobile-cta" href="#contact" onClick={closeAll}>
             Start a project
           </a>
         </div>
@@ -345,15 +420,15 @@ function App() {
             <h1>Products with gravity.</h1>
             <p>
               Mobile and web design & development, AI, games, branding,
-              prototyping, MVPs, and modernization of existing products — built
-              with craft, shipped with care.
+              prototyping, MVPs, and modernization — built with craft, shipped
+              with care.
             </p>
             <div className="cta-row">
               <a className="btn btn-primary" href="#contact">
                 Talk to us
               </a>
-              <a className="btn btn-ghost" href="#services">
-                Explore services
+              <a className="btn btn-ghost" href="#products">
+                Explore products
               </a>
             </div>
           </div>
@@ -361,93 +436,92 @@ function App() {
 
         <section className="marquee" aria-hidden="true">
           <div className="marquee-track">
+            <span>Products</span>
+            <span>Services</span>
             <span>Mobile apps</span>
             <span>Web apps</span>
-            <span>Artificial intelligence</span>
+            <span>AI</span>
             <span>Games</span>
-            <span>Branding</span>
-            <span>Prototyping</span>
             <span>MVP</span>
-            <span>Consolidation</span>
-            <span>Home services</span>
-            <span>Digital marketing</span>
-            <span>Kids learning</span>
+            <span>Branding</span>
+            <span>Products</span>
+            <span>Services</span>
             <span>Mobile apps</span>
             <span>Web apps</span>
-            <span>Artificial intelligence</span>
+            <span>AI</span>
             <span>Games</span>
-            <span>Branding</span>
-            <span>Prototyping</span>
             <span>MVP</span>
-            <span>Consolidation</span>
-            <span>Home services</span>
-            <span>Digital marketing</span>
-            <span>Kids learning</span>
-          </div>
-        </section>
-
-        <section className="section services" id="services">
-          <div className="section-head reveal">
-            <span className="eyebrow">What we build</span>
-            <h2>Full-stack product services.</h2>
-            <p>
-              From first prototype and brand to MVP, AI features, games, and
-              consolidating what you already have — design and development under
-              one roof.
-            </p>
-          </div>
-          <div className="service-list">
-            {services.map((item, index) => (
-              <article
-                className="service-item reveal"
-                key={item.title}
-                style={{ transitionDelay: `${index * 70}ms` }}
-              >
-                <span className="service-num">{item.tag}</span>
-                <div className="service-body">
-                  <span className="service-tag">{item.label}</span>
-                  <h3>{item.title}</h3>
-                  <p>{item.copy}</p>
-                </div>
-                <span className="service-arrow" aria-hidden="true">
-                  →
-                </span>
-              </article>
-            ))}
+            <span>Branding</span>
           </div>
         </section>
 
         <section className="section products" id="products">
           <div className="section-head reveal">
-            <span className="eyebrow">Flagship focus</span>
-            <h2>Learning and play, done with care.</h2>
+            <span className="eyebrow">Products</span>
+            <h2>The best builds at a glance.</h2>
             <p>
-              Two product worlds we love — experiences that stick for families
-              and sessions that spark joy for players.
+              Flagship product lanes — pick what you need, or combine them into
+              one end-to-end engagement.
             </p>
           </div>
+
+          <div className="glance-table reveal" role="table" aria-label="Products at a glance">
+            <div className="glance-row glance-head" role="row">
+              <span role="columnheader">Best for</span>
+              <span role="columnheader">Product</span>
+              <span role="columnheader">Standout</span>
+            </div>
+            {productItems.map((item) => (
+              <a key={item.id} href={item.href} className="glance-row" role="row">
+                <span className="glance-badge" role="cell">
+                  {item.badge}
+                </span>
+                <strong role="cell">{item.title}</strong>
+                <span role="cell">{item.copy}</span>
+              </a>
+            ))}
+          </div>
+
           <div className="product-grid">
-            <article className="product product-learn reveal">
-              <div className="product-glow" aria-hidden="true" />
-              <span className="service-tag">Kids learning</span>
-              <h3>Curious minds, calm parents</h3>
-              <p>
-                Interactive lessons, clear progress, and interfaces designed for
-                small hands and short attention spans.
-              </p>
-            </article>
-            <article
-              className="product product-games reveal"
-              style={{ transitionDelay: '90ms' }}
-            >
-              <div className="product-glow" aria-hidden="true" />
-              <span className="service-tag">Mobile games</span>
-              <h3>Sessions that spark joy</h3>
-              <p>
-                From first tap to live ops — art direction, gameplay loops, and
-                performance tuned for real phones.
-              </p>
-            </article>
+            {productItems.map((item, index) => (
+              <article
+                key={item.id}
+                className={`product product-${item.id} reveal`}
+                style={{ transitionDelay: `${index * 70}ms` }}
+              >
+                <div className="product-glow" aria-hidden="true" />
+                <span className="service-tag">{item.badge}</span>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+                <a className="product-link" href="#contact">
+                  Talk about this →
+                </a>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="section services" id="services">
+          <div className="section-head reveal">
+            <span className="eyebrow">Services</span>
+            <h2>What makes a great product partner.</h2>
+            <p>
+              Design and engineering across mobile, web, AI, games, brand, and
+              modernization — so you can ship faster without splitting vendors.
+            </p>
+          </div>
+          <div className="service-card-grid">
+            {serviceItems.map((item, index) => (
+              <article
+                className="service-card reveal"
+                key={item.title}
+                style={{ transitionDelay: `${index * 50}ms` }}
+              >
+                <span className="service-num">{item.tag}</span>
+                <h3>{item.title}</h3>
+                <p>{item.copy}</p>
+              </article>
+            ))}
           </div>
         </section>
 
@@ -479,13 +553,13 @@ function App() {
               <h2>Soft glow. Sharp edges.</h2>
               <p>
                 We chase ambitious products without losing warmth. Whether it is a
-                home-services marketplace or a classroom companion, we ship
-                interfaces people remember and systems that stay up.
+                marketplace, learning app, or game, we ship interfaces people
+                remember and systems that stay up.
               </p>
             </div>
             <div className="stat-row reveal" aria-label="Company highlights">
               <div className="stat">
-                <strong>11</strong>
+                <strong>8+</strong>
                 <span>Service lanes</span>
               </div>
               <div className="stat">
@@ -506,9 +580,9 @@ function App() {
               <span className="eyebrow">Contact</span>
               <h2>Let’s build your next product.</h2>
               <p>
-                Tell us about your mobile or web product, AI idea, game, brand,
-                prototype, MVP, or an existing system you want to consolidate. We
-                will reply with a clear path from brief to build.
+                Tell us about your product idea, service need, or an existing
+                system you want to consolidate. We will reply with a clear path
+                from brief to build.
               </p>
               <div className="cta-row">
                 <a className="btn btn-primary" href="mailto:contact@jupeemoon.com">
@@ -535,8 +609,8 @@ function App() {
           </span>
         </a>
         <nav className="footer-links" aria-label="Footer">
-          <a href="#services">Services</a>
           <a href="#products">Products</a>
+          <a href="#services">Services</a>
           <a href="#contact">Contact</a>
         </nav>
         <p>© {new Date().getFullYear()} Jupeemoon Software Pvt Ltd</p>

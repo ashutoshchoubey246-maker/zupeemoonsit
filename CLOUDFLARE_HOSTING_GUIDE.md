@@ -1,6 +1,6 @@
 # Cloudflare guide — Jupeemoon Software Pvt Ltd
 
-Host the website on **Cloudflare Pages**, register **jupeemoon.com**, and create **1 email** (`hello@jupeemoon.com`).
+Host the website on **Cloudflare Pages**, register **jupeemoon.com**, and create **1 email** (`contact@jupeemoon.com`).
 
 **Expected cost**
 
@@ -105,7 +105,7 @@ git push -u origin main
 
 ---
 
-## Part E — Create 1 email: `hello@jupeemoon.com`
+## Part E — Create 1 email: `contact@jupeemoon.com`
 
 Uses **Cloudflare Email Routing** (free). Mail is forwarded to your personal inbox.
 
@@ -117,16 +117,16 @@ Uses **Cloudflare Email Routing** (free). Mail is forwarded to your personal inb
    - Add your personal Gmail (e.g. `you@gmail.com`).
    - Confirm via the verification email Cloudflare sends.
 6. **Custom addresses** → **Create address**:
-   - Address: `hello`
+   - Address: `contact`
    - Action: Send to → your verified Gmail
 7. Save.
 
 ### Test
 
-- Send a test mail **to** `hello@jupeemoon.com` from another account.
+- Send a test mail **to** `contact@jupeemoon.com` from another account.
 - It should arrive in your Gmail.
 
-### Sending as `hello@jupeemoon.com` (optional)
+### Sending as `contact@jupeemoon.com` (optional)
 
 Cloudflare Email Routing **receives/forwards** only. To **send** as the company address from Gmail:
 
@@ -134,7 +134,7 @@ Cloudflare Email Routing **receives/forwards** only. To **send** as the company 
 2. **Send mail as** → **Add another email address**.
 3. Follow Gmail’s verification steps.
 
-> If Gmail requires SMTP and you don’t have it yet, you can still receive on `hello@…` and reply from personal Gmail until you add Google Workspace or another SMTP later.
+> If Gmail requires SMTP and you don’t have it yet, you can still receive on `contact@…` and reply from personal Gmail until you add Google Workspace or another SMTP later.
 
 ---
 
@@ -143,7 +143,7 @@ Cloudflare Email Routing **receives/forwards** only. To **send** as the company 
 After the domain and email work, update the site (footer / contact) to:
 
 - Company: **Jupeemoon Software Pvt Ltd**
-- Email: **hello@jupeemoon.com**
+- Email: **contact@jupeemoon.com**
 - Site: **https://jupeemoon.com**
 
 Then commit and push so Pages redeploys.
@@ -159,7 +159,7 @@ Then commit and push so Pages redeploys.
 | Deploy Cloudflare Pages (`npm run build` → `dist`) | ☐ |
 | Add custom domain + SSL | ☐ |
 | Enable Email Routing | ☐ |
-| Create `hello@jupeemoon.com` → personal Gmail | ☐ |
+| Create `contact@jupeemoon.com` → personal Gmail | ☐ |
 | Test site + email | ☐ |
 | Update site text to Pvt Ltd + new email | ☐ |
 
