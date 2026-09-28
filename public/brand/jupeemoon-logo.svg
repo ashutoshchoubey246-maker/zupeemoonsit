@@ -1,8 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 64" fill="none">
   <defs>
     <linearGradient id="tile" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
       <stop stop-color="#1B3022"/>
       <stop offset="1" stop-color="#0A130D"/>
+    </linearGradient>
+    <linearGradient id="word" x1="80" y1="0" x2="330" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C9A82E"/>
+      <stop offset="0.45" stop-color="#E6C84A"/>
+      <stop offset="1" stop-color="#B8921F"/>
     </linearGradient>
     <mask id="moon">
       <rect width="64" height="64" fill="#fff"/>
@@ -16,4 +21,5 @@
     <path d="M26 18v19a7 7 0 0 1-14 0" stroke="#3D9A52"/>
     <path d="M34 44V18l8 13 8-13v26" stroke="#E6C84A"/>
   </g>
+  <text x="80" y="43" fill="url(#word)" font-family="'Bricolage Grotesque', 'Arial Black', Arial, sans-serif" font-weight="800" font-size="38" letter-spacing="-1.5">Jupeemoon</text>
 </svg>
