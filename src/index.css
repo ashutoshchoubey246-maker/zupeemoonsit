@@ -2646,6 +2646,12 @@ details[open] .faq-toggle::after {
   font-size: 0.88rem;
 }
 
+.footer-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.35rem;
+}
+
 /* —— Motion —— */
 @keyframes rise {
   from {

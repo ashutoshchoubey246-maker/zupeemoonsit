@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Official Google Play games declaration for mobile games published by Jupeemoon."
+    />
+    <meta name="robots" content="index,follow" />
+    <meta name="theme-color" content="#0a130d" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Games Declaration — Google Play | Jupeemoon</title>
+    <style>
+      :root {
+        --ink: #101c14;
+        --ink-muted: rgba(16, 28, 20, 0.7);
+        --ink-soft: rgba(16, 28, 20, 0.48);
+        --paper: #f7f9f2;
+        --surface: #ffffff;
+        --blush: #eef4e3;
+        --green: #1f6b35;
+        --green-bright: #3d9a52;
+        --gold: #e6c84a;
+        --gold-deep: #c9a82e;
+        --line: rgba(16, 28, 20, 0.1);
+        --font-display: "Bricolage Grotesque", sans-serif;
+        --font-body: "Figtree", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-width: 320px;
+        color: var(--ink);
+        background: var(--paper);
+        font-family: var(--font-body);
+        line-height: 1.65;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      a {
+        color: var(--green);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      h1,
+      h2,
+      p {
+        margin: 0;
+      }
+
+      .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.9rem clamp(1.1rem, 4vw, 2rem);
+        border-bottom: 1px solid var(--line);
+        background: rgba(247, 249, 242, 0.94);
+        backdrop-filter: blur(12px);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .brand img {
+        width: 2.1rem;
+        height: 2.1rem;
+        display: block;
+      }
+
+      .brand-name {
+        font-family: var(--font-display);
+        font-weight: 800;
+        font-size: 1.1rem;
+        letter-spacing: -0.04em;
+        background: linear-gradient(100deg, #c9a82e 0%, #e6c84a 45%, #b8921f 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+
+      .topbar-meta {
+        color: var(--ink-soft);
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .hero {
+        padding: clamp(2.5rem, 6vw, 4rem) clamp(1.1rem, 4vw, 2rem) 1.5rem;
+        background:
+          radial-gradient(ellipse 50% 40% at 100% 0%, rgba(230, 200, 74, 0.16), transparent 55%),
+          radial-gradient(ellipse 40% 35% at 0% 100%, rgba(61, 154, 82, 0.1), transparent 50%),
+          linear-gradient(180deg, #ffffff 0%, var(--paper) 100%);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-inner,
+      .content,
+      .footer-inner {
+        max-width: 760px;
+        margin: 0 auto;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 0.75rem;
+        color: var(--green);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .hero h1 {
+        font-family: var(--font-display);
+        font-size: clamp(1.9rem, 4.5vw, 2.75rem);
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+        margin-bottom: 0.85rem;
+      }
+
+      .hero p {
+        color: var(--ink-muted);
+        font-size: 1.05rem;
+        max-width: 54ch;
+      }
+
+      .meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.55rem;
+        margin-top: 1.35rem;
+      }
+
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.35rem 0.7rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--ink-muted);
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .content {
+        padding: clamp(2rem, 5vw, 3.25rem) clamp(1.1rem, 4vw, 2rem) 3.5rem;
+      }
+
+      .card {
+        padding: 1.35rem 1.3rem;
+        margin-bottom: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: var(--surface);
+      }
+
+      .card h2 {
+        font-family: var(--font-display);
+        font-size: 1.15rem;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.55rem;
+      }
+
+      .card p,
+      .card li {
+        color: var(--ink-muted);
+        font-size: 0.98rem;
+      }
+
+      .card ul {
+        margin: 0.55rem 0 0;
+        padding-left: 1.15rem;
+      }
+
+      .card li + li {
+        margin-top: 0.35rem;
+      }
+
+      .card strong {
+        color: var(--ink);
+        font-weight: 700;
+      }
+
+      .table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 0.75rem;
+        font-size: 0.94rem;
+      }
+
+      .table th,
+      .table td {
+        text-align: left;
+        padding: 0.7rem 0.75rem;
+        border-top: 1px solid var(--line);
+        vertical-align: top;
+      }
+
+      .table th {
+        width: 38%;
+        color: var(--ink);
+        font-weight: 700;
+        background: var(--blush);
+      }
+
+      .table td {
+        color: var(--ink-muted);
+      }
+
+      .notice {
+        border-color: rgba(31, 107, 53, 0.25);
+        background: linear-gradient(145deg, #ffffff, var(--blush));
+      }
+
+      .footer {
+        border-top: 1px solid var(--line);
+        background: var(--surface);
+        padding: 1.25rem clamp(1.1rem, 4vw, 2rem) 1.75rem;
+        color: var(--ink-soft);
+        font-size: 0.88rem;
+      }
+
+      .footer-inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem 1.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/">
+        <img src="/brand/jupeemoon-mark.svg" alt="" width="34" height="34" />
+        <span class="brand-name">Jupeemoon</span>
+      </a>
+      <span class="topbar-meta">Google Play</span>
+    </header>
+
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="eyebrow">Official declaration</span>
+        <h1>Games declaration for Google Play</h1>
+        <p>
+          This page is the public declaration for mobile games published by
+          <strong>Jupeemoon</strong> on the Google Play Store. Use this URL in Play Console
+          where a games / app-content declaration link is required.
+        </p>
+        <div class="meta-row">
+          <span class="chip">Publisher: Jupeemoon</span>
+          <span class="chip">Category: Games</span>
+          <span class="chip">Last updated: 22 Oct 2026</span>
+        </div>
+      </div>
+    </section>
+
+    <main class="content">
+      <article class="card notice">
+        <h2>1. Publisher details</h2>
+        <table class="table">
+          <tbody>
+            <tr>
+              <th scope="row">Developer / publisher</th>
+              <td>Jupeemoon</td>
+            </tr>
+            <tr>
+              <th scope="row">Legal entity</th>
+              <td>Jupeemoon Software Pvt Ltd</td>
+            </tr>
+            <tr>
+              <th scope="row">Website</th>
+              <td><a href="https://jupeemoon.com">https://jupeemoon.com</a></td>
+            </tr>
+            <tr>
+              <th scope="row">Contact email</th>
+              <td>
+                <a href="mailto:contact@jupeemoon.com">contact@jupeemoon.com</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="card">
+        <h2>2. Scope of this declaration</h2>
+        <p>
+          This declaration applies to all Android games published by Jupeemoon on Google Play,
+          including current and future titles released under the Jupeemoon developer account,
+          unless a specific game publishes its own superseding declaration.
+        </p>
+        <ul>
+          <li>Casual and mid-core mobile games</li>
+          <li>Kids / educational learning games (where listed as such on Play)</li>
+          <li>Puzzle, skill, and entertainment game apps</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>3. App category declaration</h2>
+        <p>
+          The apps covered by this page are declared as <strong>Games</strong> on Google Play.
+          They are designed primarily for interactive entertainment and/or educational play,
+          not as general productivity, news, or social networking applications.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>4. Target audience</h2>
+        <p>
+          Target audience is set per game in Google Play Console (content ratings and target age
+          group). Unless a title is enrolled in Designed for Families / specifically marketed to
+          children, our default entertainment games target a general audience as configured in
+          that game’s Play Console listing.
+        </p>
+        <ul>
+          <li>
+            <strong>General games:</strong> age groups selected in Play Console for that title
+          </li>
+          <li>
+            <strong>Kids / learning games:</strong> age-appropriate design; Families policy
+            applied where enrolled
+          </li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>5. Ads, purchases and monetization</h2>
+        <p>For each game, the following is declared accurately in Google Play Console:</p>
+        <ul>
+          <li>
+            <strong>Ads:</strong> whether the app contains ads (including third-party ad SDKs)
+          </li>
+          <li>
+            <strong>In-app purchases:</strong> whether the app offers paid digital content or
+            subscriptions through Google Play Billing
+          </li>
+          <li>
+            <strong>Paid app vs free:</strong> store listing price as shown on Google Play
+          </li>
+        </ul>
+        <p style="margin-top: 0.75rem">
+          Where ads are used, they follow Google Play ads and Families policies applicable to
+          that title’s target audience.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>6. Data &amp; privacy (summary)</h2>
+        <p>
+          Data collection and sharing for each game is declared in that app’s
+          <strong>Data safety</strong> form on Google Play. Depending on the title, this may
+          include analytics, crash reporting, advertising identifiers, account data, or purchase
+          history — only as required to operate, improve, or monetize the game and as disclosed
+          in Play Console.
+        </p>
+        <p style="margin-top: 0.75rem">
+          For privacy questions about a specific Jupeemoon game, contact
+          <a href="mailto:contact@jupeemoon.com">contact@jupeemoon.com</a>
+          with the app name and package name.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>7. Content standards</h2>
+        <ul>
+          <li>No real-money gambling mechanics unless separately declared and licensed</li>
+          <li>No deceptive or impersonation content</li>
+          <li>User-generated content moderated where the game allows it</li>
+          <li>Store listing graphics and descriptions match actual gameplay</li>
+          <li>IARC / content rating questionnaires completed truthfully per title</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>8. Compliance statement</h2>
+        <p>
+          Jupeemoon affirms that information submitted in Google Play Console for our games —
+          including app category, target audience, ads, in-app purchases, Data safety, and
+          content ratings — is complete and accurate to the best of our knowledge, and that our
+          games are intended to comply with the Google Play Developer Program Policies.
+        </p>
+      </article>
+
+      <article class="card">
+        <h2>9. How to use this URL</h2>
+        <p>Paste this page URL into Google Play Console wherever a public declaration link is requested:</p>
+        <p style="margin-top: 0.65rem">
+          <strong
+            ><a href="https://jupeemoon.com/games-declaration.html"
+              >https://jupeemoon.com/games-declaration.html</a
+            ></strong
+          >
+        </p>
+        <p style="margin-top: 0.75rem">
+          Questions:
+          <a href="mailto:contact@jupeemoon.com?subject=Google%20Play%20games%20declaration"
+            >contact@jupeemoon.com</a
+          >
+        </p>
+      </article>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <p>© <span id="y"></span> Jupeemoon. Games declaration for Google Play.</p>
+        <a href="/">Back to jupeemoon.com</a>
+      </div>
+    </footer>
+    <script>
+      document.getElementById("y").textContent = String(new Date().getFullYear())
+    </script>
+  </body>
+</html>

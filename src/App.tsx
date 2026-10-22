@@ -1062,7 +1062,10 @@ function App() {
           </div>
           <div className="footer-bottom">
             <p>© {new Date().getFullYear()} Jupeemoon Software Pvt Ltd. All rights reserved.</p>
-            <a href="#top">Back to top ↑</a>
+            <div className="footer-legal">
+              <a href="/games-declaration.html">Games declaration (Google Play)</a>
+              <a href="#top">Back to top ↑</a>
+            </div>
           </div>
         </div>
       </footer>
